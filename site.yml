@@ -1,0 +1,33 @@
+- hosts: all
+  gather_facts: false
+  remote_user: root
+  tasks: 
+
+    - name: Update
+      raw: apt-get -y --allow-unauthenticated update || true
+
+    - name: Ensure python is available
+      raw: test -e /usr/bin/python || apt install -y --allow-unauthenticated python-minimal
+
+    - name: Ensure python-apt is available
+      raw: test -d /usr/share/python-apt || apt install -y --allow-unauthenticated python-apt
+
+    - name: Upgrade
+      raw: apt-get -y --allow-unauthenticated upgrade
+
+- hosts: rstudio
+  remote_user: root
+  vars:
+  tasks:
+
+      - name: Install Gdebi-core
+        apt:
+            name: gdebi-core
+
+      - name: Get Rstudio deb package
+        shell: >
+            wget https://download2.rstudio.org/rstudio-server-stretch-1.1.453-amd64.deb
+
+      - name: Install rstudio server
+        shell: >
+            gdebi rstudio-server-stretch-1.1.453-amd64.deb
