@@ -40,9 +40,15 @@
 
       - name: Add rstudio user
         shell: >
-            useradd  {{ rstudio_user }}
-            mkdir -p /home/{{rstudio_user}}
-            chown {{ rstudio_user }}:{{ rstudio_user }} /home/{{rstudio_user}}
+            useradd {{ rstudio_user }}
+
+      - name: Add rstudio user a home
+        file: 
+            path: /home/{{rstudio_user}}
+            state: directory
+            owner: {{ rstudio_user }}
+            group: {{ rstudio_user }}
+            mode:  0775
 
       - name: Configure rstudio passwd
         shell: >
