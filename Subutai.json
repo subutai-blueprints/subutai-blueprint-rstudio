@@ -62,7 +62,7 @@
         "userName": {
             "description": "Enter Rstudio user name",
             "type": "string",
-            "default": "rstudio",
+            "default": "ruser",
             "validation": "[a-zA-Z0-9]+"
         },
         "userPasswd": {
