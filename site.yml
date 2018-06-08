@@ -36,7 +36,7 @@
 
       - name: Install rstudio server
         shell: >
-            gdebi /tmp/rs-server.deb
+            gdebi --n /tmp/rs-server.deb
 
       - name: Add rstudio user
         shell: >
