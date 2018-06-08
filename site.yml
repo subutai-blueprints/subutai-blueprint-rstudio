@@ -30,12 +30,13 @@
             name: gdebi-core
 
       - name: Get Rstudio server deb package
-        shell: >
-            wget https://download2.rstudio.org/rstudio-server-stretch-1.1.453-amd64.deb
+        get_url:
+            url: https://download2.rstudio.org/rstudio-server-stretch-1.1.453-amd64.deb
+            dest: /tmp/rs-server.deb
 
       - name: Install rstudio server
         shell: >
-            gdebi rstudio-server-stretch-1.1.453-amd64.deb
+            gdebi /tmp/rs-server.deb
 
       - name: Add rstudio user
         shell: >
@@ -43,4 +44,4 @@
 
       - name: Configure rstudio passwd
         shell: >
-            echo {{ rstudio_passwd }} | passwd rstudio --stdin
+            echo {{rstudio_user}}:{{ rstudio_passwd }} | chpasswd
