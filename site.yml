@@ -15,19 +15,32 @@
     - name: Upgrade
       raw: apt-get -y --allow-unauthenticated upgrade
 
-- hosts: rstudio
+- hosts: rs
   remote_user: root
   vars:
   tasks:
+
+      - name: Install R base
+        apt:
+            name: r-base
+            update_cache: yes
 
       - name: Install Gdebi-core
         apt:
             name: gdebi-core
 
-      - name: Get Rstudio deb package
+      - name: Get Rstudio server deb package
         shell: >
             wget https://download2.rstudio.org/rstudio-server-stretch-1.1.453-amd64.deb
 
       - name: Install rstudio server
         shell: >
             gdebi rstudio-server-stretch-1.1.453-amd64.deb
+
+      - name: Add rstudio user
+        shell: >
+            useradd --home /home/R {{ rstudio_user }}
+
+      - name: Configure rstudio passwd
+        shell: >
+            echo {{ rstudio_passwd }} | passwd rstudio --stdin
