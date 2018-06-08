@@ -44,11 +44,11 @@
 
       - name: Add rstudio user a home
         file: 
-            path: /home/{{rstudio_user}}
-            state: directory
-            owner: {{ rstudio_user }}
-            group: {{ rstudio_user }}
-            mode:  0775
+            path: "/home/{{rstudio_user}}"
+            state: "directory"
+            owner: "{{ rstudio_user }}"
+            group: "{{ rstudio_user }}"
+            mode:  "0775"
 
       - name: Configure rstudio passwd
         shell: >
