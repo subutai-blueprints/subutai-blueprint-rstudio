@@ -40,7 +40,7 @@
 
       - name: Add rstudio user
         shell: >
-            useradd --home /home/R {{ rstudio_user }}
+            useradd --home /home/{{rstudio_user}} {{ rstudio_user }}
 
       - name: Configure rstudio passwd
         shell: >
