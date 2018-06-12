@@ -1,5 +1,5 @@
 {
-    "name": "RstudioServer",
+    "name": "${environmentName}",
     "description": "Rstudio Server",
     "version": "1.0.0",
     "author": "https://github.com/marcoarthur",
@@ -53,6 +53,12 @@
         ]
     },
     "user-variables": {
+        "environmentName": {
+            "description": "Enter the environment name",
+            "type": "string",
+            "default": "RstudioServer",
+            "validation": "[a-zA-Z0-9]+"
+        },
         "domainName": {
             "description": "Enter the application domain name",
             "type": "domain",
