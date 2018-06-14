@@ -74,13 +74,13 @@
         "userName": {
             "description": "Enter Rstudio user name",
             "type": "string",
-            "default": "ruser",
+            "default": "",
             "validation": "[a-zA-Z0-9]+"
         },
         "userPasswd": {
             "description": "Enter user password",
             "type": "string",
-            "default": "topsecret",
+            "default": "",
             "validation": "[a-zA-Z0-9]+"
         },
         "containerSize": {
