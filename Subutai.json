@@ -27,7 +27,7 @@
         }
     ],
     "ansible-configuration": {
-        "source-url": "https://github.com/marcoarthur/subutai-blueprint-rstudio/archive/master.zip",
+        "source-url": "https://github.com/subutai-blueprints/subutai-blueprint-rstudio/archive/master.zip",
         "ansible-playbook": "site.yml",
         "extra-vars": [
             {
@@ -75,7 +75,7 @@
             "description": "Enter Rstudio user name",
             "type": "string",
             "default": "",
-            "validation": "[a-zA-Z0-9]+"
+            "validation": "(?!^(root|daemon|bin|sys|sync|games|man|lp|mail|news|uucp|proxy|backup|list|irc|gnats|nobody|sshd)$)^[a-zA-Z0-9]+"
         },
         "userPasswd": {
             "description": "Enter user password",
